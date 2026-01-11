@@ -73,10 +73,12 @@ jobs:
           REMOTE_HOST: ${{ secrets.REMOTE_HOST }}
           REMOTE_USER: ${{ secrets.REMOTE_USER }}
           REMOTE_PORT: ${{ secrets.REMOTE_PORT }}
-          TARGET: "/var/www/html/blog/"
+          TARGET: "/opt/1panel/apps/openresty/openresty/www/sites/qingswe.com/blog/index/"
         run: |
           set -e
           PORT="${REMOTE_PORT:-22}"
+          # 先确保目标目录存在，并验证是否有写权限（便于快速定位权限问题）
+          ssh -p "${PORT}" -o StrictHostKeyChecking=yes "${REMOTE_USER}@${REMOTE_HOST}" "mkdir -p '${TARGET}' && test -w '${TARGET}' && echo '目标目录可写' || (echo '目标目录不可写（请检查目录属主/权限）' && exit 1)"
           rsync -rtvz --delete -e "ssh -p ${PORT} -o StrictHostKeyChecking=yes" dist/ "${REMOTE_USER}@${REMOTE_HOST}:${TARGET}"
 
   deploy:
