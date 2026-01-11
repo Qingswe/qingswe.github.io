@@ -1,42 +1,64 @@
-name: Deploy to GitHub Pages
+name: Deploy to All
 
 on:
-  # Trigger the workflow every time you push to the `main` branch
-  # Using a different branch name? Replace `main` with your branch’s name
   push:
     branches: [ main ]
-  # Allows you to run this workflow manually from the Actions tab on GitHub.
   workflow_dispatch:
 
-# Allow this job to clone the repo and create a page deployment
 permissions:
   contents: read
   pages: write
   id-token: write
 
 jobs:
-  build:
+  build-and-deploy:
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout your repository using git
-        uses: actions/checkout@v5
-      - name: Install, build, and upload your site
-        uses: withastro/action@v5
-        # with:
-          # path: . # The root location of your Astro project inside the repository. (optional)
-          # node-version: 24 # The specific version of Node that should be used to build your site. Defaults to 22. (optional)
-          # package-manager: pnpm@latest # The Node package manager that should be used to install dependencies and build your site. Automatically detected based on your lockfile. (optional)
-          # build-cmd: pnpm run build # The command to run to build your site. Runs the package build script/task by default. (optional)
-        # env:
-          # PUBLIC_POKEAPI: 'https://pokeapi.co/api/v2' # Use single quotation marks for the variable value. (optional)
+      # 1.以此拉取代码
+      - name: Checkout
+        uses: actions/checkout@v4
 
-  deploy:
-    needs: build
-    runs-on: ubuntu-latest
-    environment:
-      name: github-pages
-      url: ${{ steps.deployment.outputs.page_url }}
-    steps:
+      # 2. 安装 Node.js
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: "20"
+          cache: 'npm' # 如果你用 pnpm，改成 'pnpm'
+
+      # 3. 安装依赖
+      - name: Install dependencies
+        run: npm ci # 如果没有 package-lock.json，可以用 npm install
+
+      # 4. 构建项目 (生成 dist 目录)
+      - name: Build site
+        run: npm run build
+
+      # ==========================================
+      # 分支 A: 部署到 GitHub Pages
+      # ==========================================
+      - name: Upload pages artifact
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: "./dist"
+
       - name: Deploy to GitHub Pages
-        id: deployment
         uses: actions/deploy-pages@v4
+
+      # ==========================================
+      # 分支 B: 同步到 腾讯云服务器
+      # ==========================================
+      - name: Deploy to Tencent Cloud via SSH
+        uses: easingthemes/ssh-deploy@main
+        with:
+          # 对应刚才设置的 Secrets
+          SSH_PRIVATE_KEY: ${{ secrets.SSH_PRIVATE_KEY }}
+          REMOTE_HOST: ${{ secrets.REMOTE_HOST }}
+          REMOTE_USER: ${{ secrets.REMOTE_USER }}
+          
+          # 本地要上传的文件夹 (Astro 默认是 dist/)
+          SOURCE: "dist/"
+          # 远程服务器的目标路径 (Nginx 的 root 目录)
+          TARGET: "/var/www/html/blog/" 
+          
+          # 额外参数：-r 递归, -t 保持时间, -v 详细, -z 压缩, --delete 删除服务器上多余的文件
+          ARGS: "-rtvz --delete"
