@@ -41,21 +41,43 @@ jobs:
       # ==========================================
       # 分支 B: 同步到 腾讯云服务器（在 build job 里做，避免跨 job 传 dist）
       # ==========================================
-      - name: Deploy to Tencent Cloud via SSH
-        uses: easingthemes/ssh-deploy@main
+      - name: 启用 SSH Agent（注入私钥）
+        uses: webfactory/ssh-agent@v0.9.0
         with:
-          # 对应刚才设置的 Secrets
-          SSH_PRIVATE_KEY: ${{ secrets.SSH_PRIVATE_KEY }}
+          ssh-private-key: ${{ secrets.SSH_PRIVATE_KEY }}
+
+      - name: 写入 known_hosts（避免首次连接交互）
+        env:
+          REMOTE_HOST: ${{ secrets.REMOTE_HOST }}
+          REMOTE_PORT: ${{ secrets.REMOTE_PORT }}
+        run: |
+          set -e
+          mkdir -p ~/.ssh
+          chmod 700 ~/.ssh
+          PORT="${REMOTE_PORT:-22}"
+          ssh-keyscan -p "$PORT" -H "$REMOTE_HOST" >> ~/.ssh/known_hosts
+          chmod 600 ~/.ssh/known_hosts
+
+      - name: 测试 SSH 登录（用于定位 publickey 失败原因）
+        env:
           REMOTE_HOST: ${{ secrets.REMOTE_HOST }}
           REMOTE_USER: ${{ secrets.REMOTE_USER }}
+          REMOTE_PORT: ${{ secrets.REMOTE_PORT }}
+        run: |
+          set -e
+          PORT="${REMOTE_PORT:-22}"
+          ssh -o StrictHostKeyChecking=yes -p "$PORT" "${REMOTE_USER}@${REMOTE_HOST}" "echo 'SSH 登录成功'; whoami; hostname; pwd"
 
-          # 本地要上传的文件夹 (Astro 默认是 dist/)
-          SOURCE: "dist/"
-          # 远程服务器的目标路径 (Nginx 的 root 目录)
+      - name: Rsync 同步 dist 到服务器
+        env:
+          REMOTE_HOST: ${{ secrets.REMOTE_HOST }}
+          REMOTE_USER: ${{ secrets.REMOTE_USER }}
+          REMOTE_PORT: ${{ secrets.REMOTE_PORT }}
           TARGET: "/var/www/html/blog/"
-
-          # 额外参数：-r 递归, -t 保持时间, -v 详细, -z 压缩, --delete 删除服务器上多余的文件
-          ARGS: "-rtvz --delete"
+        run: |
+          set -e
+          PORT="${REMOTE_PORT:-22}"
+          rsync -rtvz --delete -e "ssh -p ${PORT} -o StrictHostKeyChecking=yes" dist/ "${REMOTE_USER}@${REMOTE_HOST}:${TARGET}"
 
   deploy:
     needs: build
