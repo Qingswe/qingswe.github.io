@@ -29,6 +29,12 @@ jobs:
           build-cmd: pnpm run build # 用于构建你的网站的命令。默认运行软件包的构建脚本或任务。（可选）
         # env:
           # PUBLIC_POKEAPI: 'https://pokeapi.co/api/v2' # 对变量值使用单引号。（可选）
+      - name: Upload build artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: dist
+          path: ./dist
+          retention-days: 1
 
   deploy:
     needs: build
@@ -43,7 +49,7 @@ jobs:
       - name: Download artifact
         uses: actions/download-artifact@v4
         with:
-          name: astro
+          name: dist
           path: ./
 
       - name: Upload pages artifact
