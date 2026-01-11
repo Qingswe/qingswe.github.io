@@ -40,6 +40,12 @@ jobs:
       # ==========================================
       # 分支 A: 部署到 GitHub Pages
       # ==========================================
+      - name: Download artifact
+        uses: actions/download-artifact@v4
+        with:
+          name: astro
+          path: ./
+
       - name: Upload pages artifact
         uses: actions/upload-pages-artifact@v3
         with:
