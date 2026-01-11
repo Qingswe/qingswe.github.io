@@ -29,12 +29,22 @@ jobs:
           build-cmd: pnpm run build # 用于构建你的网站的命令。默认运行软件包的构建脚本或任务。（可选）
         # env:
           # PUBLIC_POKEAPI: 'https://pokeapi.co/api/v2' # 对变量值使用单引号。（可选）
+      - name: Verify dist directory exists
+        run: |
+          if [ ! -d "dist" ]; then
+            echo "ERROR: dist directory not found after build!"
+            exit 1
+          fi
+          echo "✓ dist directory exists"
+          echo "dist directory size:"
+          du -sh dist/
       - name: Upload build artifact
         uses: actions/upload-artifact@v4
         with:
           name: dist
-          path: ./dist
+          path: dist/
           retention-days: 1
+          if-no-files-found: error
 
   deploy:
     needs: build
@@ -51,6 +61,31 @@ jobs:
         with:
           name: dist
           path: ./
+          merge-multiple: false
+
+      - name: Ensure dist directory exists
+        run: |
+          echo "Current directory structure:"
+          ls -la
+          echo ""
+          if [ -d "dist" ]; then
+            echo "✓ dist directory exists"
+            echo "dist directory contents (first 10 items):"
+            ls -la dist/ | head -10
+          else
+            echo "⚠ dist directory not found, checking if files were extracted to current directory..."
+            # 如果文件被解压到了当前目录，创建 dist 目录并移动文件
+            if [ "$(ls -A . 2>/dev/null | grep -v '^\.git$' | wc -l)" -gt 0 ]; then
+              echo "Files found in current directory, creating dist directory..."
+              mkdir -p dist
+              # 移动所有文件到 dist 目录（排除 .git 和 dist 本身）
+              find . -maxdepth 1 -not -name '.' -not -name 'dist' -not -name '.git' -exec mv {} dist/ \;
+              echo "✓ Files moved to dist directory"
+            else
+              echo "ERROR: No files found and dist directory does not exist!"
+              exit 1
+            fi
+          fi
 
       - name: Upload pages artifact
         uses: actions/upload-pages-artifact@v3
