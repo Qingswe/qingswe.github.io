@@ -1,0 +1,104 @@
+---
+import License from "@components/misc/License.astro";
+import Markdown from "@components/misc/Markdown.astro";
+import I18nKey from "@i18n/i18nKey";
+import { i18n } from "@i18n/translation";
+import MainGridLayout from "@layouts/MainGridLayout.astro";
+import { getCollection } from "astro:content";
+import { Icon } from "astro-icon/components";
+import { getWikiUrlBySlug } from "@utils/url-utils";
+import { licenseConfig } from "src/config";
+import { formatDateToYYYYMMDD } from "../../utils/date-utils";
+
+export async function getStaticPaths() {
+    const wikiEntries = await getCollection("wiki");
+    return wikiEntries.map((entry) => ({
+        params: { slug: entry.slug },
+        props: { entry },
+    }));
+}
+
+const { entry } = Astro.props;
+const { Content, headings } = await entry.render();
+const { remarkPluginFrontmatter } = await entry.render();
+---
+
+<MainGridLayout title={entry.data.title} description={entry.data.description} lang={entry.data.lang} headings={headings}>
+    <div class="flex w-full rounded-[var(--radius-large)] overflow-hidden relative mb-4">
+        <div id="post-container" class="card-base z-10 px-6 md:px-9 pt-6 pb-4 relative w-full">
+
+            <!-- Wiki badge + reading stats -->
+            <div class="flex flex-row items-center gap-4 text-black/30 dark:text-white/30 mb-3 transition onload-animation">
+                <div class="flex items-center gap-1.5 px-2 py-1 rounded-md bg-[var(--primary)]/10 text-[var(--primary)] text-xs font-medium">
+                    <Icon name="material-symbols:book-outline-rounded" class="text-sm" />
+                    <span>Wiki</span>
+                </div>
+                <div class="flex flex-row items-center">
+                    <div class="transition h-6 w-6 rounded-md bg-black/5 dark:bg-white/10 text-black/50 dark:text-white/50 flex items-center justify-center mr-2">
+                        <Icon name="material-symbols:notes-rounded"></Icon>
+                    </div>
+                    <div class="text-sm">{remarkPluginFrontmatter.words} {" " + i18n(I18nKey.wordsCount)}</div>
+                </div>
+                <div class="flex flex-row items-center">
+                    <div class="transition h-6 w-6 rounded-md bg-black/5 dark:bg-white/10 text-black/50 dark:text-white/50 flex items-center justify-center mr-2">
+                        <Icon name="material-symbols:schedule-outline-rounded"></Icon>
+                    </div>
+                    <div class="text-sm">
+                        {remarkPluginFrontmatter.minutes} {" " + i18n(remarkPluginFrontmatter.minutes === 1 ? I18nKey.minuteCount : I18nKey.minutesCount)}
+                    </div>
+                </div>
+            </div>
+
+            <!-- Title -->
+            <div class="relative onload-animation">
+                <div class="transition w-full block font-bold mb-3
+                    text-3xl md:text-[2.25rem]/[2.75rem]
+                    text-black/90 dark:text-white/90
+                    md:before:w-1 before:h-5 before:rounded-md before:bg-[var(--primary)]
+                    before:absolute before:top-[0.75rem] before:left-[-1.125rem]">
+                    {entry.data.title}
+                </div>
+            </div>
+
+            <!-- Metadata -->
+            <div class="onload-animation flex flex-wrap items-center gap-3 mb-5">
+                {entry.data.updated && (
+                    <div class="flex items-center gap-1.5 text-sm text-black/40 dark:text-white/40">
+                        <Icon name="material-symbols:update-rounded" class="text-base" />
+                        <span>Updated {formatDateToYYYYMMDD(entry.data.updated)}</span>
+                    </div>
+                )}
+                {entry.data.tags && entry.data.tags.length > 0 && (
+                    <div class="flex flex-wrap gap-1.5">
+                        {entry.data.tags.map(tag => (
+                            <span class="text-xs px-2 py-0.5 rounded-full bg-black/5 dark:bg-white/10 text-black/60 dark:text-white/60">
+                                #{tag}
+                            </span>
+                        ))}
+                    </div>
+                )}
+            </div>
+
+            <div class="border-[var(--line-divider)] border-dashed border-b-[1px] mb-5 onload-animation"></div>
+
+            <!-- Content -->
+            <Markdown class="mb-6 markdown-content onload-animation">
+                <Content />
+            </Markdown>
+
+            {licenseConfig.enable && <License title={entry.data.title} slug={entry.slug} pubDate={entry.data.updated ?? new Date()} class="mb-6 rounded-xl license-container onload-animation"></License>}
+        </div>
+    </div>
+
+    <!-- Back to wiki link -->
+    <div class="flex mb-4 w-full">
+        <a href="/wiki/" class="w-full font-bold overflow-hidden active:scale-95">
+            <div class="btn-card rounded-2xl w-full h-[3.75rem] max-w-full px-4 flex items-center !justify-start gap-4">
+                <Icon name="material-symbols:chevron-left-rounded" class="text-[2rem] text-[var(--primary)]" />
+                <div class="overflow-hidden transition overflow-ellipsis whitespace-nowrap max-w-[calc(100%_-_3rem)] text-black/75 dark:text-white/75">
+                    {i18n(I18nKey.wiki)}
+                </div>
+            </div>
+        </a>
+    </div>
+</MainGridLayout>
