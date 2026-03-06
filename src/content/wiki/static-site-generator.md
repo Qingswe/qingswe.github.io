@@ -7,7 +7,7 @@ updated: 2024-01-01
 
 ## 什么是静态站点生成器？
 
-静态站点生成器（SSG）是一种在构建时将模板和内容（通常是 [[w:markdown|Markdown]]）预编译成静态 HTML、CSS 和 JavaScript 文件的工具。
+静态站点生成器（SSG）是一种在构建时将模板和内容（通常是 [[w/markdown|Markdown]]）预编译成静态 HTML、CSS 和 JavaScript 文件的工具。
 
 与动态网站不同，静态站点无需服务端运行时，所有页面在部署前就已生成完毕。
 
@@ -29,4 +29,4 @@ updated: 2024-01-01
 
 ## 本博客
 
-本博客使用 **Astro** 构建，结合 Fuwari 主题，将 [[w:markdown|Markdown]] 文章编译为静态页面。
+本博客使用 **Astro** 构建，结合 Fuwari 主题，将 [[w/markdown|Markdown]] 文章编译为静态页面。

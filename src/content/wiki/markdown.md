@@ -57,4 +57,4 @@ Markdown 的设计哲学是"易读易写"，即便是未经渲染的纯文本也
 
 ## 相关知识
 
-- [[w:static-site-generator|静态站点生成器]] — 通常使用 Markdown 作为内容格式
+- [[w/static-site-generator|静态站点生成器]] — 通常使用 Markdown 作为内容格式
