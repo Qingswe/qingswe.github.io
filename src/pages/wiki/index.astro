@@ -51,35 +51,35 @@ const letters = Object.keys(groups).sort();
                     <ul class="grid grid-cols-1 md:grid-cols-2 gap-2">
                         {groups[letter].map(entry => (
                             <li>
-                                <div class="relative flex items-start gap-3 p-3 rounded-xl hover:bg-black/5 dark:hover:bg-white/5 transition group">
+                                <div class="rounded-xl hover:bg-black/5 dark:hover:bg-white/5 transition group">
                                     <a
                                         href={getWikiUrlBySlug(entry.slug)}
-                                        aria-label={entry.data.title}
-                                        class="absolute inset-0 rounded-xl"
-                                    ></a>
-                                    <Icon
-                                        name="material-symbols:book-outline-rounded"
-                                        class="text-[var(--primary)] text-xl mt-0.5 shrink-0 relative z-10"
-                                    />
-                                    <div class="min-w-0 relative z-10">
-                                        <div class="font-medium text-black/80 dark:text-white/80 group-hover:text-[var(--primary)] transition truncate">
-                                            {entry.data.title}
+                                        class={`flex items-start gap-3 px-3 pt-3 ${entry.data.tags && entry.data.tags.length > 0 ? 'pb-1.5' : 'pb-3'}`}
+                                    >
+                                        <Icon
+                                            name="material-symbols:book-outline-rounded"
+                                            class="text-[var(--primary)] text-xl mt-0.5 shrink-0"
+                                        />
+                                        <div class="min-w-0">
+                                            <div class="font-medium text-black/80 dark:text-white/80 group-hover:text-[var(--primary)] transition truncate">
+                                                {entry.data.title}
+                                            </div>
+                                            {entry.data.description && (
+                                                <div class="text-sm text-black/50 dark:text-white/50 mt-0.5 line-clamp-2">
+                                                    {entry.data.description}
+                                                </div>
+                                            )}
                                         </div>
-                                        {entry.data.description && (
-                                            <div class="text-sm text-black/50 dark:text-white/50 mt-0.5 line-clamp-2">
-                                                {entry.data.description}
-                                            </div>
-                                        )}
-                                        {entry.data.tags && entry.data.tags.length > 0 && (
-                                            <div class="flex flex-wrap gap-1 mt-1.5">
-                                                {entry.data.tags.map(tag => (
-                                                    <a href={getTagUrl(tag)} class="relative z-10 text-xs px-1.5 py-0.5 rounded bg-black/5 dark:bg-white/10 text-black/50 dark:text-white/50 hover:text-[var(--primary)] hover:bg-[var(--primary)]/10 transition">
-                                                        {tag}
-                                                    </a>
-                                                ))}
-                                            </div>
-                                        )}
-                                    </div>
+                                    </a>
+                                    {entry.data.tags && entry.data.tags.length > 0 && (
+                                        <div class="flex flex-wrap gap-1 px-3 pb-2 pl-11">
+                                            {entry.data.tags.map(tag => (
+                                                <a href={getTagUrl(tag)} class="text-xs px-1.5 py-0.5 rounded bg-black/5 dark:bg-white/10 text-black/50 dark:text-white/50 hover:text-[var(--primary)] hover:bg-[var(--primary)]/10 transition">
+                                                    {tag}
+                                                </a>
+                                            ))}
+                                        </div>
+                                    )}
                                 </div>
                             </li>
                         ))}
