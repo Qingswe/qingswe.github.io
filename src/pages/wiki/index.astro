@@ -3,7 +3,7 @@ import I18nKey from "@i18n/i18nKey";
 import { i18n } from "@i18n/translation";
 import MainGridLayout from "@layouts/MainGridLayout.astro";
 import { getCollection } from "astro:content";
-import { getWikiUrlBySlug } from "@utils/url-utils";
+import { getWikiUrlBySlug, getTagUrl } from "@utils/url-utils";
 import { Icon } from "astro-icon/components";
 
 const wikiEntries = await getCollection("wiki");
@@ -71,9 +71,9 @@ const letters = Object.keys(groups).sort();
                                         {entry.data.tags && entry.data.tags.length > 0 && (
                                             <div class="flex flex-wrap gap-1 mt-1.5">
                                                 {entry.data.tags.map(tag => (
-                                                    <span class="text-xs px-1.5 py-0.5 rounded bg-black/5 dark:bg-white/10 text-black/50 dark:text-white/50">
+                                                    <a href={getTagUrl(tag)} class="text-xs px-1.5 py-0.5 rounded bg-black/5 dark:bg-white/10 text-black/50 dark:text-white/50 hover:text-[var(--primary)] hover:bg-[var(--primary)]/10 transition" onclick="event.stopPropagation()">
                                                         {tag}
-                                                    </span>
+                                                    </a>
                                                 ))}
                                             </div>
                                         )}
