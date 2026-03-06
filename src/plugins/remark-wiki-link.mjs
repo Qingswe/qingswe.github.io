@@ -9,14 +9,18 @@ import { SKIP, visit } from "unist-util-visit";
  *   [[slug#heading]]       → /posts/slug/#heading  (display: "slug")
  *   [[slug#heading|Text]]  → /posts/slug/#heading  (display: "Text")
  *
- *   Wiki article links (prefix with "w:"):
- *   [[w:slug]]             → /wiki/slug/   (display: "slug")
- *   [[w:slug|Display Text]]→ /wiki/slug/   (display: "Display Text")
- *   [[w:slug#heading]]     → /wiki/slug/#heading  (display: "slug")
+ *   Wiki article links (prefix with "w/"):
+ *   [[w/slug]]             → /wiki/slug/   (display: "slug")
+ *   [[w/slug|Display Text]]→ /wiki/slug/   (display: "Display Text")
+ *   [[w/slug#heading]]     → /wiki/slug/#heading
+ *
+ *   NOTE: Do NOT use "w:" as prefix — remark-directive parses ":name" as
+ *   text directives at the micromark tokenization level, which would break
+ *   the [[...]] pattern before this plugin runs.
  *
  * @param {object} options
- * @param {string} options.basePath  Base path for post links. Default: "/posts/"
- * @param {string} options.wikiBasePath  Base path for wiki links. Default: "/wiki/"
+ * @param {string} options.basePath       Base path for post links. Default: "/posts/"
+ * @param {string} options.wikiBasePath   Base path for wiki links. Default: "/wiki/"
  */
 export function remarkWikiLink(options = {}) {
 	const { basePath = "/posts/", wikiBasePath = "/wiki/" } = options;
@@ -54,11 +58,13 @@ export function remarkWikiLink(options = {}) {
 					displayText = rawTarget;
 				}
 
-				// Detect wiki article prefix "w:"
+				// Detect wiki article prefix "w/" (use slash, not colon, to avoid
+				// conflict with remark-directive which parses ":name" as text directives)
 				let isWikiLink = false;
-				if (rawTarget.startsWith("w:")) {
+				if (rawTarget.startsWith("w/")) {
 					isWikiLink = true;
 					rawTarget = rawTarget.slice(2).trim();
+					// If no custom display text was provided, use the bare slug
 					if (displayText === content.trim()) {
 						displayText = rawTarget;
 					}
@@ -71,7 +77,7 @@ export function remarkWikiLink(options = {}) {
 				if (hashIdx !== -1) {
 					slug = rawTarget.slice(0, hashIdx);
 					anchor = rawTarget.slice(hashIdx + 1);
-					// If no custom display text was given, strip the anchor from it
+					// Strip the anchor from display text if it was auto-generated
 					if (displayText === rawTarget) {
 						displayText = slug;
 					}
@@ -81,9 +87,7 @@ export function remarkWikiLink(options = {}) {
 				}
 
 				// Normalise slug: lowercase + spaces → hyphens
-				const normalizedSlug = slug
-					.toLowerCase()
-					.replace(/\s+/g, "-");
+				const normalizedSlug = slug.toLowerCase().replace(/\s+/g, "-");
 
 				// Build href
 				const linkBase = isWikiLink ? wikiBasePath : basePath;
