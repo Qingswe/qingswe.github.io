@@ -1,0 +1,89 @@
+---
+import I18nKey from "@i18n/i18nKey";
+import { i18n } from "@i18n/translation";
+import MainGridLayout from "@layouts/MainGridLayout.astro";
+import { getCollection } from "astro:content";
+import { getWikiUrlBySlug } from "@utils/url-utils";
+import { Icon } from "astro-icon/components";
+
+const wikiEntries = await getCollection("wiki");
+
+// Sort alphabetically by title
+const sorted = wikiEntries.sort((a, b) =>
+    a.data.title.localeCompare(b.data.title)
+);
+
+// Group by first letter
+const groups: Record<string, typeof sorted> = {};
+for (const entry of sorted) {
+    const letter = entry.data.title[0].toUpperCase();
+    if (!groups[letter]) groups[letter] = [];
+    groups[letter].push(entry);
+}
+const letters = Object.keys(groups).sort();
+---
+
+<MainGridLayout title={i18n(I18nKey.wiki)}>
+    <div class="flex w-full rounded-[var(--radius-large)] overflow-hidden relative mb-4">
+        <div class="card-base z-10 px-6 md:px-9 pt-6 pb-4 relative w-full">
+            <div class="flex items-center gap-3 mb-6">
+                <div class="w-1 h-8 rounded-md bg-[var(--primary)]"></div>
+                <h1 class="text-3xl font-bold text-black/90 dark:text-white/90">
+                    {i18n(I18nKey.wiki)}
+                </h1>
+                <span class="text-sm text-black/30 dark:text-white/30 ml-2">
+                    {sorted.length} {sorted.length === 1 ? "entry" : "entries"}
+                </span>
+            </div>
+
+            {letters.length === 0 && (
+                <div class="text-center py-16 text-black/40 dark:text-white/40">
+                    <Icon name="material-symbols:menu-book-outline-rounded" class="text-5xl mb-4 mx-auto block" />
+                    <p>No wiki entries yet.</p>
+                </div>
+            )}
+
+            {letters.map(letter => (
+                <div class="mb-8">
+                    <div class="text-lg font-bold text-[var(--primary)] mb-3 pb-1 border-b border-[var(--line-divider)]">
+                        {letter}
+                    </div>
+                    <ul class="grid grid-cols-1 md:grid-cols-2 gap-2">
+                        {groups[letter].map(entry => (
+                            <li>
+                                <a
+                                    href={getWikiUrlBySlug(entry.slug)}
+                                    class="flex items-start gap-3 p-3 rounded-xl hover:bg-black/5 dark:hover:bg-white/5 transition group"
+                                >
+                                    <Icon
+                                        name="material-symbols:book-outline-rounded"
+                                        class="text-[var(--primary)] text-xl mt-0.5 shrink-0"
+                                    />
+                                    <div class="min-w-0">
+                                        <div class="font-medium text-black/80 dark:text-white/80 group-hover:text-[var(--primary)] transition truncate">
+                                            {entry.data.title}
+                                        </div>
+                                        {entry.data.description && (
+                                            <div class="text-sm text-black/50 dark:text-white/50 mt-0.5 line-clamp-2">
+                                                {entry.data.description}
+                                            </div>
+                                        )}
+                                        {entry.data.tags && entry.data.tags.length > 0 && (
+                                            <div class="flex flex-wrap gap-1 mt-1.5">
+                                                {entry.data.tags.map(tag => (
+                                                    <span class="text-xs px-1.5 py-0.5 rounded bg-black/5 dark:bg-white/10 text-black/50 dark:text-white/50">
+                                                        {tag}
+                                                    </span>
+                                                ))}
+                                            </div>
+                                        )}
+                                    </div>
+                                </a>
+                            </li>
+                        ))}
+                    </ul>
+                </div>
+            ))}
+        </div>
+    </div>
+</MainGridLayout>

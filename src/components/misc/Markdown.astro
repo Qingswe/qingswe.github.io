@@ -46,6 +46,17 @@ const className = Astro.props.class;
         line-height: 1.5;
         opacity: 0.75;
     }
+
+    .wiki-tooltip-badge {
+        display: inline-block;
+        font-size: 0.7rem;
+        padding: 0.1rem 0.4rem;
+        border-radius: 0.25rem;
+        margin-bottom: 0.3rem;
+        background: var(--primary);
+        color: white;
+        opacity: 0.85;
+    }
 }
 
 :root {
@@ -64,7 +75,7 @@ const className = Astro.props.class;
 <script>
 /* ── Wiki Link Hover Tooltip ─────────────────────────────────────── */
 
-let postIndex: Record<string, { title: string; description: string }> | null = null;
+let postIndex: Record<string, { title: string; description: string; type: "post" | "wiki" }> | null = null;
 let tooltipEl: HTMLElement | null = null;
 let showTimer: ReturnType<typeof setTimeout> | null = null;
 let hideTimer: ReturnType<typeof setTimeout> | null = null;
@@ -92,14 +103,18 @@ function getTooltip(): HTMLElement {
 
 async function showTooltip(link: HTMLElement) {
     const slug = link.dataset.wikiSlug;
+    const type = link.dataset.wikiType ?? "post";
     if (!slug) return;
 
     const index = await fetchPostIndex();
-    const post = index?.[slug];
+    const lookupKey = type === "wiki" ? `wiki:${slug}` : slug;
+    const post = index?.[lookupKey];
     if (!post?.title) return;
 
     const el = getTooltip();
+    const badge = type === "wiki" ? `<div class="wiki-tooltip-badge">Wiki</div>` : "";
     el.innerHTML =
+        badge +
         `<div class="wiki-tooltip-title">${post.title}</div>` +
         (post.description
             ? `<div class="wiki-tooltip-desc">${post.description}</div>`

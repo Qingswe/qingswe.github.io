@@ -9,11 +9,17 @@ import { SKIP, visit } from "unist-util-visit";
  *   [[slug#heading]]       → /posts/slug/#heading  (display: "slug")
  *   [[slug#heading|Text]]  → /posts/slug/#heading  (display: "Text")
  *
+ *   Wiki article links (prefix with "w:"):
+ *   [[w:slug]]             → /wiki/slug/   (display: "slug")
+ *   [[w:slug|Display Text]]→ /wiki/slug/   (display: "Display Text")
+ *   [[w:slug#heading]]     → /wiki/slug/#heading  (display: "slug")
+ *
  * @param {object} options
  * @param {string} options.basePath  Base path for post links. Default: "/posts/"
+ * @param {string} options.wikiBasePath  Base path for wiki links. Default: "/wiki/"
  */
 export function remarkWikiLink(options = {}) {
-	const { basePath = "/posts/" } = options;
+	const { basePath = "/posts/", wikiBasePath = "/wiki/" } = options;
 	const WIKI_LINK_REGEX = /\[\[([^\]]+)\]\]/g;
 
 	return (tree) => {
@@ -48,6 +54,16 @@ export function remarkWikiLink(options = {}) {
 					displayText = rawTarget;
 				}
 
+				// Detect wiki article prefix "w:"
+				let isWikiLink = false;
+				if (rawTarget.startsWith("w:")) {
+					isWikiLink = true;
+					rawTarget = rawTarget.slice(2).trim();
+					if (displayText === content.trim()) {
+						displayText = rawTarget;
+					}
+				}
+
 				// Separate optional anchor (#heading)
 				const hashIdx = rawTarget.indexOf("#");
 				let slug, anchor;
@@ -70,7 +86,8 @@ export function remarkWikiLink(options = {}) {
 					.replace(/\s+/g, "-");
 
 				// Build href
-				let href = `${basePath}${normalizedSlug}/`;
+				const linkBase = isWikiLink ? wikiBasePath : basePath;
+				let href = `${linkBase}${normalizedSlug}/`;
 				if (anchor) {
 					href += `#${anchor.toLowerCase().replace(/\s+/g, "-")}`;
 				}
@@ -82,6 +99,7 @@ export function remarkWikiLink(options = {}) {
 						hProperties: {
 							class: "wiki-link",
 							"data-wiki-slug": normalizedSlug,
+							"data-wiki-type": isWikiLink ? "wiki" : "post",
 						},
 					},
 					children: [{ type: "text", value: displayText }],

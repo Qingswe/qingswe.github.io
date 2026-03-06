@@ -22,7 +22,17 @@ const postsCollection = defineCollection({
 const specCollection = defineCollection({
 	schema: z.object({}),
 });
+const wikiCollection = defineCollection({
+	schema: z.object({
+		title: z.string(),
+		description: z.string().optional().default(""),
+		tags: z.array(z.string()).optional().default([]),
+		lang: z.string().optional().default(""),
+		updated: z.date().optional(),
+	}),
+});
 export const collections = {
 	posts: postsCollection,
 	spec: specCollection,
+	wiki: wikiCollection,
 };
