@@ -55,10 +55,17 @@ export async function getTagList(): Promise<Tag[]> {
 	const allBlogPosts = await getCollection<"posts">("posts", ({ data }) => {
 		return import.meta.env.PROD ? data.draft !== true : true;
 	});
+	const allWikiEntries = await getCollection("wiki");
 
 	const countMap: { [key: string]: number } = {};
 	allBlogPosts.forEach((post: { data: { tags: string[] } }) => {
 		post.data.tags.forEach((tag: string) => {
+			if (!countMap[tag]) countMap[tag] = 0;
+			countMap[tag]++;
+		});
+	});
+	allWikiEntries.forEach((entry: { data: { tags?: string[] } }) => {
+		(entry.data.tags || []).forEach((tag: string) => {
 			if (!countMap[tag]) countMap[tag] = 0;
 			countMap[tag]++;
 		});
@@ -70,6 +77,27 @@ export async function getTagList(): Promise<Tag[]> {
 	});
 
 	return keys.map((key) => ({ name: key, count: countMap[key] }));
+}
+
+export type WikiForList = {
+	slug: string;
+	data: {
+		title: string;
+		tags: string[];
+		description?: string;
+	};
+};
+
+export async function getWikiList(): Promise<WikiForList[]> {
+	const allWikiEntries = await getCollection("wiki");
+	return allWikiEntries.map((entry) => ({
+		slug: entry.slug,
+		data: {
+			title: entry.data.title,
+			tags: entry.data.tags || [],
+			description: entry.data.description,
+		},
+	}));
 }
 
 export type Category = {
