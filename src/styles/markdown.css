@@ -34,17 +34,6 @@
         }
     }
 
-    /* Obsidian-style wiki links [[...]] */
-    a.wiki-link {
-        &::before {
-            content: "[[";
-            @apply opacity-40 font-normal text-[0.85em];
-        }
-        &::after {
-            content: "]]";
-            @apply opacity-40 font-normal text-[0.85em];
-        }
-    }
 
     code {
         @apply bg-[var(--inline-code-bg)] text-[var(--inline-code-color)] px-1 py-0.5 rounded-md overflow-hidden;
