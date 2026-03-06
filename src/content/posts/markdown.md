@@ -9,6 +9,8 @@ draft: false
 
 # An h1 header
 
+> **Wiki Link 示例：** 你可以用 `[[markdown-extended]]` 这样的语法跳转到其他文章，例如：[[markdown-extended]] 或者带自定义标题 [[markdown-extended|Markdown 扩展示例]]。
+
 Paragraphs are separated by a blank line.
 
 2nd paragraph. _Italic_, **bold**, and `monospace`. Itemized lists

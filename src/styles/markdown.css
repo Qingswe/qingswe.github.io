@@ -25,12 +25,24 @@
         box-decoration-break: clone;
         -webkit-box-decoration-break: clone;
         display: inline-block;
-    
+
         &:hover, &:active {
             @apply decoration-transparent;
             background: var(--btn-plain-bg-hover);
             border-bottom: 1px dashed var(--link-hover);
             text-decoration: none;
+        }
+    }
+
+    /* Obsidian-style wiki links [[...]] */
+    a.wiki-link {
+        &::before {
+            content: "[[";
+            @apply opacity-40 font-normal text-[0.85em];
+        }
+        &::after {
+            content: "]]";
+            @apply opacity-40 font-normal text-[0.85em];
         }
     }
 
