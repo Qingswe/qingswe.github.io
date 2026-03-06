@@ -1,6 +1,10 @@
 <script lang="ts">
 import I18nKey from "@i18n/i18nKey";
 import { i18n } from "@i18n/translation";
+
+function getDocType(url: string): "wiki" | "post" {
+	return url.includes("/wiki/") ? "wiki" : "post";
+}
 import Icon from "@iconify/svelte";
 import { url } from "@utils/url-utils.ts";
 import { onMount } from "svelte";
@@ -177,8 +181,21 @@ top-20 left-4 md:left-[unset] right-4 shadow-2xl rounded-2xl p-2">
         <a href={item.url}
            class="transition first-of-type:mt-2 lg:first-of-type:mt-0 group block
        rounded-xl text-lg px-3 py-2 hover:bg-[var(--btn-plain-bg-hover)] active:bg-[var(--btn-plain-bg-active)]">
-            <div class="transition text-90 inline-flex font-bold group-hover:text-[var(--primary)]">
+            <div class="transition text-90 inline-flex items-center gap-2 font-bold group-hover:text-[var(--primary)]">
                 {item.meta.title}<Icon icon="fa6-solid:chevron-right" class="transition text-[0.75rem] translate-x-1 my-auto text-[var(--primary)]"></Icon>
+                {#if getDocType(item.url) === "wiki"}
+                    <span class="text-xs font-medium px-1.5 py-0.5 rounded
+                        bg-[var(--primary)]/10 text-[var(--primary)]
+                        group-hover:bg-[var(--primary)]/20">
+                        {i18n(I18nKey.wiki)}
+                    </span>
+                {:else}
+                    <span class="text-xs font-medium px-1.5 py-0.5 rounded
+                        bg-black/5 dark:bg-white/10
+                        text-black/50 dark:text-white/50">
+                        {i18n(I18nKey.post)}
+                    </span>
+                {/if}
             </div>
             <div class="transition text-sm text-50">
                 {@html item.excerpt}
