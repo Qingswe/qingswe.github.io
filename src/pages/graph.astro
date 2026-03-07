@@ -1,0 +1,51 @@
+---
+import MainGridLayout from "@layouts/MainGridLayout.astro";
+import GraphView from "@components/GraphView.svelte";
+import { getCollection } from "astro:content";
+import { Icon } from "astro-icon/components";
+
+const posts = await getCollection("posts", ({ data }) => data.draft !== true);
+const wikiEntries = await getCollection("wiki");
+const totalNodes = posts.length + wikiEntries.length;
+---
+
+<MainGridLayout title="Relationship Graph" description="Visual map of all posts and wiki pages connected by bidirectional links.">
+    <div class="flex w-full rounded-[var(--radius-large)] overflow-hidden relative mb-4">
+        <div class="card-base z-10 px-6 md:px-9 pt-6 pb-6 relative w-full">
+
+            <!-- Header -->
+            <div class="flex items-center gap-3 mb-5">
+                <div class="w-1 h-8 rounded-md bg-[var(--primary)]"></div>
+                <h1 class="text-3xl font-bold text-black/90 dark:text-white/90">
+                    Relationship Graph
+                </h1>
+                <span class="text-sm text-black/30 dark:text-white/30 ml-2">
+                    {totalNodes} nodes
+                </span>
+            </div>
+
+            <!-- Legend -->
+            <div class="flex flex-wrap gap-4 mb-5 text-sm text-black/50 dark:text-white/50">
+                <span class="flex items-center gap-1.5">
+                    <span class="inline-block w-3 h-3 rounded-full bg-[#94a3b8]"></span>
+                    Posts
+                </span>
+                <span class="flex items-center gap-1.5">
+                    <span class="inline-block w-3 h-3 rounded-full bg-[#8b5cf6]"></span>
+                    Wiki pages
+                </span>
+                <span class="flex items-center gap-1.5">
+                    <span class="inline-block w-3 h-3 rounded-full bg-[#7c3aed]"></span>
+                    Current page (when opened from a post/wiki)
+                </span>
+            </div>
+
+            <!-- Graph canvas area -->
+            <div class="rounded-2xl overflow-hidden border border-[var(--line-divider)]"
+                 style="height: clamp(420px, calc(100vh - 22rem), 720px);">
+                <GraphView client:only="svelte" />
+            </div>
+
+        </div>
+    </div>
+</MainGridLayout>
