@@ -59,9 +59,9 @@ const letters = Object.keys(groups).sort();
                                     ></a>
                                     <Icon
                                         name="material-symbols:book-outline-rounded"
-                                        class="text-[var(--primary)] text-xl mt-0.5 shrink-0 relative z-10"
+                                        class="text-[var(--primary)] text-xl mt-0.5 shrink-0 relative z-10 pointer-events-none"
                                     />
-                                    <div class="min-w-0 relative z-10">
+                                    <div class="min-w-0 relative z-10 pointer-events-none">
                                         <div class="font-medium text-black/80 dark:text-white/80 group-hover:text-[var(--primary)] transition truncate">
                                             {entry.data.title}
                                         </div>
@@ -73,7 +73,7 @@ const letters = Object.keys(groups).sort();
                                         {entry.data.tags && entry.data.tags.length > 0 && (
                                             <div class="flex flex-wrap gap-1 mt-1.5">
                                                 {entry.data.tags.map(tag => (
-                                                    <a href={getTagUrl(tag)} class="relative z-10 text-xs px-1.5 py-0.5 rounded bg-black/5 dark:bg-white/10 text-black/50 dark:text-white/50 hover:text-[var(--primary)] hover:bg-[var(--primary)]/10 transition">
+                                                    <a href={getTagUrl(tag)} class="pointer-events-auto relative z-10 text-xs px-1.5 py-0.5 rounded bg-black/5 dark:bg-white/10 text-black/50 dark:text-white/50 hover:text-[var(--primary)] hover:bg-[var(--primary)]/10 transition">
                                                         {tag}
                                                     </a>
                                                 ))}
