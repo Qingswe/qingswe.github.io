@@ -9,6 +9,7 @@ import { Icon } from "astro-icon/components";
 import { getWikiUrlBySlug, getTagUrl } from "@utils/url-utils";
 import { licenseConfig } from "src/config";
 import { formatDateToYYYYMMDD } from "../../utils/date-utils";
+import MiniGraph from "@components/MiniGraph.svelte";
 
 export async function getStaticPaths() {
     const wikiEntries = await getCollection("wiki");
@@ -88,6 +89,8 @@ const { remarkPluginFrontmatter } = await entry.render();
             </Markdown>
 
             {licenseConfig.enable && <License title={entry.data.title} slug={entry.slug} pubDate={entry.data.updated ?? new Date()} class="mb-6 rounded-xl license-container onload-animation"></License>}
+
+            <MiniGraph client:only="svelte" currentNodeId={`wiki:${entry.slug}`} />
         </div>
     </div>
 
