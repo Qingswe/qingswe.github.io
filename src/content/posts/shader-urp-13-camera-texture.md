@@ -1,6 +1,6 @@
 ---
-title: 13 摄像机纹理
-published: 2026-03-08
+title: 13 摄像机纹理 [URP]
+published: 2024-07-22
 description: '之前实现的运动模糊是基于两个图片之间的层叠，通常不能得到较为准确的效果'
 tags: [Shader, Unity, 图形学, URP]
 category: Shader入门精要
@@ -29,10 +29,10 @@ draft: false
 
 #### 对于在RenderFeature 中使用的参数一定要序列化
 
-![image](https://prod-files-secure.s3.us-west-2.amazonaws.com/2a7b777d-4df6-4360-9370-996d14cf5323/bb610d72-eb3f-4de8-8f4f-f6911fdfbf13/Untitled.png)
+![image](/images/shader/a6fc1498.png)
 
 #### 根据深度法线图的描边
 
-![image](https://prod-files-secure.s3.us-west-2.amazonaws.com/2a7b777d-4df6-4360-9370-996d14cf5323/0fe1a828-515e-40ad-8f63-43329a08b7c5/Untitled.png)
+![image](/images/shader/60e026fa.png)
 
 #### Add relevant files

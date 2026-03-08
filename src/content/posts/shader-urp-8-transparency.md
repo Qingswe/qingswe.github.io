@@ -1,6 +1,6 @@
 ---
-title: 8 透明效果
-published: 2026-03-08
+title: 8 透明效果 [URP]
+published: 2024-07-06
 description: '在渲染透明物体时，渲染顺序至关重要。这是因为透明效果依赖于颜色混合——当前片元的颜色需要与已经写入颜色缓冲区（Color Buffer）的颜色进行叠加计算。'
 tags: [Shader, Unity, 图形学, URP]
 category: Shader入门精要

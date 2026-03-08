@@ -1,6 +1,6 @@
 ---
-title: 11 让画面动起来
-published: 2026-03-08
+title: 11 让画面动起来 [URP]
+published: 2024-07-12
 description: '最常见的一种纹理动画'
 tags: [Shader, Unity, 图形学, URP]
 category: Shader入门精要
@@ -277,6 +277,11 @@ A    = bh
 右手坐标系：a×b 顺时针远离你，逆时针指向你
 
 基本轴向叉积
+
+|  |  |
+| --- | --- |
+|  |  |
+|  |  |
 
 </details>
 

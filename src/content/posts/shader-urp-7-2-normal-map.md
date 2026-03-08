@@ -1,6 +1,6 @@
 ---
-title: 7.2 法线贴图
-published: 2026-03-08
+title: 7.2 法线贴图 [URP]
+published: 2024-07-03
 description: '当我们需要去计算光照的时候，我们需要统一各个方向矢量所在的坐标空间。对此有两种常用的方法：'
 tags: [Shader, Unity, 图形学, URP]
 category: Shader入门精要
