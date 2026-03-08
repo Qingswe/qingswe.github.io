@@ -1,6 +1,6 @@
 ---
-title: 10 高级纹理
-published: 2026-03-08
+title: 10 高级纹理 [URP]
+published: 2024-07-09
 description: '如果想要去模拟反射的效果，我们就需要 反射的出射方向，去从CubeMap中的对应面的纹理 进行颜色采样。所以我们就需要根据入射光线的方向和表面法线方向来计算反射方向'
 tags: [Shader, Unity, 图形学, URP]
 category: Shader入门精要
@@ -241,7 +241,7 @@ Unity Shader中还可以使用一种特殊的 Pass 来获取屏幕图像，这�
 
 当使用 GrabPass时，需要小心物体的渲染队列设置，我们通常需要把物体的渲染队列设置成透明队列。这样可以保证在渲染该物体时，所有的不透明物体已经被渲染在屏幕上。获取正确的屏幕图像。
 
-![image](https://prod-files-secure.s3.us-west-2.amazonaws.com/2a7b777d-4df6-4360-9370-996d14cf5323/549c2a08-5f6a-4395-a622-1c00b437b3dc/Untitled.png)
+![image](/images/shader/b1134f45.png)
 
 <details>
 <summary>代码</summary>

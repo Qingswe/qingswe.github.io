@@ -1,6 +1,6 @@
 ---
-title: 9 更复杂的光照
-published: 2026-03-08
+title: 9 更复杂的光照 [URP]
+published: 2024-07-06
 description: '在URP中因为SRPBatch功能，取消了多Pass，原先Standrard中用于进行多光源渲染的AdditionalPass不存在了，但我们可以直接在一个Pass拿到Additional Lights的信息获取多光源的渲染结果。此处要注意！！Forward 和 Forward+ 渲染通道对于多光源...'
 tags: [Shader, Unity, 图形学, URP]
 category: Shader入门精要
@@ -27,11 +27,11 @@ CastShadows 在MeshRenderer中设置
 
 但我们可以在材质中更改 面的渲染剔除类型，来投射影子
 
-![image](https://prod-files-secure.s3.us-west-2.amazonaws.com/2a7b777d-4df6-4360-9370-996d14cf5323/84d6f4f4-ba07-4cf5-b882-f06e42f0f4f9/Untitled.png)
+![image](/images/shader/2817c2bd.png)
 
-![image](https://prod-files-secure.s3.us-west-2.amazonaws.com/2a7b777d-4df6-4360-9370-996d14cf5323/333a1167-d68a-4f8a-aaf4-42fa7943574b/Untitled.png)
+![image](/images/shader/6b7ca122.png)
 
-![image](https://prod-files-secure.s3.us-west-2.amazonaws.com/2a7b777d-4df6-4360-9370-996d14cf5323/8aeb2118-6e17-47fa-b0cb-c87980d18385/Untitled.png)
+![image](/images/shader/6a610c2e.png)
 
 但我们会发现，立方体的颜色还是没有变化，那是因为我们还没有 进行接收阴影的相关操作，所以不会对投射来的阴影做出变化
 
