@@ -509,10 +509,10 @@ onDestroy(() => {
                    bg-[var(--card-bg)] border border-[var(--line-divider)]"
 			style="left: {tooltipX}px; top: {tooltipY}px; max-width: 200px;"
 		>
-			<div class="font-semibold truncate text-[var(--text-color)]">
+			<div class="font-semibold truncate text-black/90 dark:text-white/90">
 				{hoveredNode.title}
 			</div>
-			<div class="text-xs mt-0.5 opacity-60 text-[var(--text-color)]">
+			<div class="text-xs mt-0.5 text-black/50 dark:text-white/50">
 				{hoveredNode.type === "wiki" ? "Wiki" : "Post"} · {hoveredNode.linkCount}
 				{hoveredNode.linkCount === 1 ? "link" : "links"}
 			</div>
@@ -524,7 +524,7 @@ onDestroy(() => {
 		on:click={resetView}
 		class="absolute top-3 right-3 z-10 rounded-lg px-2.5 py-1.5 text-xs
                opacity-50 hover:opacity-90 transition-opacity
-               bg-[var(--card-bg)] border border-[var(--line-divider)] text-[var(--text-color)]"
+               bg-[var(--card-bg)] border border-[var(--line-divider)] text-black/70 dark:text-white/70"
 		aria-label="Reset view"
 		title="Reset view"
 	>
@@ -534,7 +534,7 @@ onDestroy(() => {
 	<!-- Hint -->
 	<div
 		class="absolute bottom-3 left-1/2 -translate-x-1/2 text-xs opacity-30
-               pointer-events-none text-[var(--text-color)] whitespace-nowrap"
+               pointer-events-none text-black dark:text-white whitespace-nowrap"
 	>
 		Scroll to zoom · Drag to pan · Click node to open
 	</div>
