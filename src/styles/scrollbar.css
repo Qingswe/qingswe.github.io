@@ -1,6 +1,6 @@
 .scrollbar-base.os-scrollbar {
     @apply transition-all;
-    pointer-events: unset;
+    pointer-events: auto;
 
     &.os-scrollbar-horizontal {
         @apply py-1 px-2 h-4;
