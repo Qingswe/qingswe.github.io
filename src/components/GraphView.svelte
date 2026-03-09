@@ -89,7 +89,7 @@ async function loadData() {
 		const res = await fetch("/graph-data.json");
 		const data = await res.json();
 
-		const spreadR = Math.max(160, Math.sqrt(data.nodes.length) * 65);
+		const spreadR = Math.max(160, Math.sqrt(data.nodes.length) * 90);
 
 		nodes = (data.nodes as Omit<GraphNode, "x" | "y" | "vx" | "vy" | "fx" | "fy">[]).map(
 			(n, i) => {
@@ -122,8 +122,8 @@ async function loadData() {
 function simulationStep() {
 	if (nodes.length < 2 || alpha <= 0.002) return;
 
-	const REPULSION = 1400;
-	const SPRING_LEN = 90;
+	const REPULSION = 2200;
+	const SPRING_LEN = 130;
 	const SPRING_K = 0.04;
 	const GRAVITY = 0.018;
 	const DAMPING = 0.82;
@@ -476,6 +476,10 @@ onMount(async () => {
 	canvas.addEventListener("wheel", onWheel, { passive: false });
 
 	await loadData();
+	// Pre-warm: settle the simulation before rendering to avoid initial twitch
+	for (let i = 0; i < 200; i++) {
+		simulationStep();
+	}
 	loop();
 
 	return () => {
