@@ -30,9 +30,9 @@ Replication只会从服务端到客户端产生，这种复制到客户端的过
 当客户端预测性激活一个能力时，存在一个窗口，可以在其中执行预测性动作。
 当这个窗口开启时，客户端可以执行重要的操作来改变游戏状态，比如更改属性等且无需向服务器请求许可
 
-![[w/unreal/gas-prediction.png|GAS Prediction.png]]
+![GAS-Prediction.png](/images/unreal/GAS-Prediction.png)
 ## SideEffect 预测
-![[w/unreal/gas-prediction-1.png|GAS Prediction-1.png]]
+![GAS-Prediction-1.png](/images/unreal/GAS-Prediction-1.png)
 
 ## GamePrediction.h
 好的，这是对您提供的虚幻C++注释的中文Markdown翻译，已去除注释标记：

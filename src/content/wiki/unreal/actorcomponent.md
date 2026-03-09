@@ -50,7 +50,7 @@ void StartAttack();
 
 ## 组件层级
 
-![[w/unreal/actorcomponent.png|ActorComponent.png]]
+![ActorComponent.png](/images/unreal/ActorComponent.png)
 
 **Unity vs Unreal 的区别：**
 - Unity 中，每个 GameObject 上挂载的组件都是平级的关系

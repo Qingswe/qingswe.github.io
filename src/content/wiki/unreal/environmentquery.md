@@ -99,7 +99,7 @@ updated: 2025-05-08
 - 哪一层 Test 把点刷掉了
 - 分数是被哪一个 Test 拉开的
 
-![[w/unreal/environmentquery.png|EnvironmentQuery.png]]
+![EnvironmentQuery.png](/images/unreal/EnvironmentQuery.png)
 # EnvironmentQueryContext
 简单说，EnvironmentQueryContext（环境查询情境/上下文）是在虚幻引擎的 EQS（Environment Query System，环境查询系统）里，用来作为“参考目标”的一种对象/类，用于告诉查询“要围绕谁、相对于谁做测试”。
 

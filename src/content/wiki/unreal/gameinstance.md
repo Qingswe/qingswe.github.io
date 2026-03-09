@@ -60,7 +60,7 @@ updated: 2025-11-26
 
 ## 结构层级图
 
-![[w/unreal/gameinstance.png|GameInstance.png]]
+![GameInstance.png](/images/unreal/GameInstance.png)
 
 ## 使用方式
 

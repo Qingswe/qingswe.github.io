@@ -34,7 +34,7 @@ check(World)
 跟check宏相似，但是在出现错误时，还会打印一条日志
 ### FActorSpawnParameters
 
-![[w/unreal/actor创建与销毁.png|Actor创建与销毁.png]]
+![Actor创建与销毁.png](/images/unreal/Actor创建与销毁.png)
 
 - SpawnCollisionHandlingOverride：当生成时遇到Collision时候的策略
 
@@ -54,7 +54,7 @@ TSubclassOf<<ABirdActor> BirdActorPrefab;
 因为EndPlay是为了释放当前Actor本身拥有的那些资源和组件。
 销毁时可以传入枚举，表明原因这个Actor为什么被销毁掉
 当需要在Actor内部 释放资源（如销毁动态创建的组件、停止音效）或保存状态时候，清理资源逻辑要写在EndPlay
-![[w/unreal/actor创建与销毁-1.png|Actor创建与销毁-1.png]]
+![Actor创建与销毁-1.png](/images/unreal/Actor创建与销毁-1.png)
 
 当释放完毕了，如果有别的逻辑想通知别的Actor被销毁掉则可以使用 Destroyed
 当需要让 外部系统（如游戏模式、其他Actor）感知到该Actor的销毁并做出响应的时候，逻辑要写在Destroyed

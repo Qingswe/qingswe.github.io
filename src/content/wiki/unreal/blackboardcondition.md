@@ -14,7 +14,7 @@ updated: 2025-05-06
 - Self 中止自身
 - Lower Priority 比自身低的优先级
 	优先级是行为树节点右边的红色小圆圈标记
-	![[w/unreal/blackboardcondition.png|541]]
+	![BlackBoardCondition](/images/unreal/BlackBoardCondition.png)
 - Both
 
 ## `Notify Observer` 的区别
