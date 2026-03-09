@@ -1,7 +1,7 @@
 ---
 title: 上下文环境
 description: 虚幻引擎中 Actor 的创建、生命周期与销毁流程。
-tags: [unreal, wiki, actor, spawn, lifecycle]
+tags: [Unreal, Actor]
 updated: 2025-11-25
 ---
 

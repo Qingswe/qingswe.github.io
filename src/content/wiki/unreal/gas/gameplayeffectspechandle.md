@@ -1,7 +1,7 @@
 ---
 title: GameplayEffectSpecHandle
 description: GameplayEffectSpecHandle 用于安全传递和共享 GE Spec 句柄。
-tags: [unreal, gas, wiki, spec-handle, runtime]
+tags: [Unreal, GAS]
 updated: 2025-04-22
 ---
 

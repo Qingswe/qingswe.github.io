@@ -1,7 +1,7 @@
 ---
 title: BlackBoard
 description: 行为树中 BlackBoard 的作用与关键配置项。
-tags: [unreal, wiki, behavior-tree, blackboard]
+tags: [Unreal, AI]
 updated: 2025-05-06
 ---
 

@@ -1,7 +1,7 @@
 ---
 title: WidgetComponent
 description: WidgetComponent 用于把 UMG 挂到 3D 场景对象上显示。
-tags: [unreal, wiki, ui, widget-component]
+tags: [Unreal, UI]
 updated: 2025-04-29
 ---
 

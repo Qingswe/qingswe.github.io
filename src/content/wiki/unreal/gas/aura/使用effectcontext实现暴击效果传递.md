@@ -1,7 +1,7 @@
 ---
 title: 使用EffectContext实现暴击效果传递
 description: 记录通过自定义 EffectContext 传递暴击信息的实现步骤。
-tags: [unreal, gas, post, aura, effect-context]
+tags: [Unreal, GAS, Aura]
 updated: 2025-05-01
 ---
 

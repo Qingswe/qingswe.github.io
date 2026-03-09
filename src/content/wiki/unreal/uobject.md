@@ -1,7 +1,7 @@
 ---
 title: UObject
 description: Unreal 中 UObject 的定位、反射能力、创建方式与 GC 引用规则。
-tags: [unreal, wiki, uobject, reflection, gc]
+tags: [Unreal, C++]
 updated: 2026-03-08
 ---
 

@@ -1,7 +1,7 @@
 ---
 title: RootMotion
 description: Root Motion 与 Motion Warping 的基础概念。
-tags: [unreal, wiki, animation, root-motion]
+tags: [Unreal, Animation]
 updated: 2025-05-09
 ---
 

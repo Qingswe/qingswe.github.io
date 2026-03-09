@@ -1,7 +1,7 @@
 ---
 title: GameplayTask & AbilityTask - 游戏任务与能力任务
 description: GameplayTask 与 AbilityTask 用于组织能力中的异步执行流程。
-tags: [unreal, gas, wiki, gameplay-task, async]
+tags: [Unreal, GAS]
 updated: 2025-04-17
 ---
 

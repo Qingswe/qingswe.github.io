@@ -1,7 +1,7 @@
 ---
 title: 核心类型
 description: 虚幻引擎中 Subsystem 的层级、生命周期与依赖初始化。
-tags: [unreal, wiki, subsystem, architecture]
+tags: [Unreal, Architecture]
 updated: 2025-11-27
 ---
 

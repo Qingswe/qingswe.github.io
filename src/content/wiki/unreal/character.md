@@ -1,7 +1,7 @@
 ---
 title: Character
 description: 虚幻引擎中 Character 类的定位与常见用途。
-tags: [unreal, wiki, character, pawn]
+tags: [Unreal, Actor]
 updated: 2025-11-26
 ---
 

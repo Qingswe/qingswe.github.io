@@ -1,7 +1,7 @@
 ---
 title: GameplayAbility (GA) - 游戏能力
 description: GameplayAbility 定义技能激活、消耗、冷却和执行逻辑。
-tags: [unreal, gas, wiki, gameplay-ability, ability]
+tags: [Unreal, GAS]
 updated: 2025-04-17
 ---
 

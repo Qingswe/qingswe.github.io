@@ -1,7 +1,7 @@
 ---
 title: GameAbilityTargetTypes
 description: 项目中的 TargetTypes 封装了技能目标选择与命中数据结构。
-tags: [unreal, gas, wiki, targeting, project]
+tags: [Unreal, GAS]
 updated: 2025-04-19
 ---
 

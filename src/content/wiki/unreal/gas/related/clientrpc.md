@@ -1,7 +1,7 @@
 ---
 title: Client RPC
 description: Client RPC 用于由服务器触发、在拥有客户端执行的远程调用。
-tags: [unreal, wiki, rpc, network, client]
+tags: [Unreal, Network]
 updated: 2025-04-29
 ---
 

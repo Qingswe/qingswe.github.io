@@ -1,7 +1,7 @@
 ---
 title: SourceObject
 description: SourceObject 记录 GameplayEffect 的来源对象并参与执行查询。
-tags: [unreal, gas, wiki, source-object, effect-context]
+tags: [Unreal, GAS]
 updated: 2025-04-17
 ---
 

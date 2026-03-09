@@ -1,7 +1,7 @@
 ---
 title: GameplayEffectSpec
 description: GameplayEffectSpec 是 GE 在运行时携带等级、上下文和动态参数的实例。
-tags: [unreal, gas, wiki, gameplay-effect-spec, runtime]
+tags: [Unreal, GAS]
 updated: 2025-04-30
 ---
 

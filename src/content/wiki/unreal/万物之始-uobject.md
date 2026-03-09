@@ -1,7 +1,7 @@
 ---
 title: 万物之始 UObject
 description: 从命名、创建到 GC，梳理 UObject 在 Unreal 中的基础定位。
-tags: [unreal, post, uobject, reflection, gc]
+tags: [Unreal, C++]
 updated: 2025-11-25
 ---
 

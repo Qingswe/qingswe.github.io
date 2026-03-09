@@ -1,7 +1,7 @@
 ---
 title: UFUNCTION
 description: UFUNCTION 说明符用于控制函数的反射、蓝图与 RPC 行为。
-tags: [unreal, wiki, reflection, ufunction]
+tags: [Unreal, C++]
 updated: 2025-04-18
 ---
 

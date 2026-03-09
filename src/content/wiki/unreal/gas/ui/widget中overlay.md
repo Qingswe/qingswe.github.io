@@ -1,7 +1,7 @@
 ---
 title: Widget中Overlay
 description: 解释为什么在 Widget 根面板中常用 Overlay 组织分层 UI。
-tags: [unreal, wiki, ui, overlay]
+tags: [Unreal, UI]
 updated: 2025-04-23
 ---
 

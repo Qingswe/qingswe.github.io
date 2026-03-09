@@ -1,7 +1,7 @@
 ---
 title: AnimMontage - 动画蒙太奇
 description: AnimMontage 在 GAS 中承担技能动作播放与时序同步。
-tags: [unreal, gas, wiki, montage, animation]
+tags: [Unreal, GAS, Animation]
 updated: 2025-04-17
 ---
 

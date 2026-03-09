@@ -1,7 +1,7 @@
 ---
 title: ActorComponent
 description: 虚幻引擎中 ActorComponent 的作用、类型与反射要点。
-tags: [unreal, wiki, actor-component, component]
+tags: [Unreal, Actor]
 updated: 2025-11-25
 ---
 

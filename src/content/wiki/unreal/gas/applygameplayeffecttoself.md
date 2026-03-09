@@ -1,7 +1,7 @@
 ---
 title: ApplyGamePlayEffectToSelf
 description: 对比 ApplyGameplayEffectToSelf 与 ApplyGameplayEffectSpecToSelf 的适用场景。
-tags: [unreal, gas, wiki, gameplay-effect, api]
+tags: [Unreal, GAS]
 updated: 2025-04-24
 ---
 

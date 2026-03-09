@@ -1,7 +1,7 @@
 ---
 title: FGameplayAbilityTargetData
 description: TargetData 在能力激活过程中传递目标选择结果与复制数据。
-tags: [unreal, gas, wiki, target-data, network]
+tags: [Unreal, GAS]
 updated: 2025-04-19
 ---
 

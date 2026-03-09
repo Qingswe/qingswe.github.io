@@ -1,7 +1,7 @@
 ---
 title: MetaAttributes
 description: Meta Attributes 作为伤害等中间结果的临时属性通道。
-tags: [unreal, gas, wiki, meta-attributes, damage]
+tags: [Unreal, GAS]
 updated: 2025-04-23
 ---
 

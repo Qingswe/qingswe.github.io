@@ -1,7 +1,7 @@
 ---
 title: BlackBoardCondition
 description: 黑板条件装饰器中的观察模式与分支中止策略。
-tags: [unreal, wiki, behavior-tree, blackboard, decorator]
+tags: [Unreal, AI]
 updated: 2025-05-06
 ---
 

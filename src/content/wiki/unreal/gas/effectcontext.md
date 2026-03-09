@@ -1,7 +1,7 @@
 ---
 title: EffectContext
 description: GameplayEffectContext 用于携带效果来源、命中信息和自定义上下文。
-tags: [unreal, gas, wiki, effect-context, network]
+tags: [Unreal, GAS]
 updated: 2025-04-22
 ---
 

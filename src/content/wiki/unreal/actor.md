@@ -1,7 +1,7 @@
 ---
 title: Actor
 description: 虚幻引擎中 Actor 的基础概念、职责与定位。
-tags: [unreal, wiki, actor, core-concept]
+tags: [Unreal, Actor]
 updated: 2025-05-06
 ---
 

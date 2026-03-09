@@ -1,7 +1,7 @@
 ---
 title: UClass
 description: UClass 是 UObject 类型在反射系统中的运行时描述对象。
-tags: [unreal, wiki, reflection, uclass]
+tags: [Unreal, C++]
 updated: 2025-05-01
 ---
 

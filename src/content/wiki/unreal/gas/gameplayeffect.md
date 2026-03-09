@@ -1,7 +1,7 @@
 ---
 title: GameplayEffect (GE)
 description: GameplayEffect 描述属性修改、持续时间与标签变化等效果配置。
-tags: [unreal, gas, wiki, gameplay-effect, effect]
+tags: [Unreal, GAS]
 updated: 2025-04-23
 ---
 

@@ -1,7 +1,7 @@
 ---
 title: FGameplayEffectAttributeCaptureDefinition
 description: AttributeCaptureDefinition 定义 Execution 或 MMC 中要捕获的属性。
-tags: [unreal, gas, wiki, attribute-capture, execution]
+tags: [Unreal, GAS]
 updated: 2025-04-30
 ---
 

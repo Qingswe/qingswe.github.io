@@ -1,7 +1,7 @@
 ---
 title: Gameplay Effects
 description: Gameplay Effect 相关主题的汇总入口。
-tags: [unreal, gas, wiki, moc, effect]
+tags: [Unreal, GAS]
 updated: 2025-05-04
 ---
 

@@ -1,7 +1,7 @@
 ---
 title: 样条曲线 spline
 description: 样条曲线组件用于描述路径、轨迹与沿线采样。
-tags: [unreal, wiki, component, spline]
+tags: [Unreal]
 updated: 2025-04-18
 ---
 

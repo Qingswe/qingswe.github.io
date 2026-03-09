@@ -1,7 +1,7 @@
 ---
 title: 虚幻Aura
 description: Aura 学习过程中的属性、标签和项目实现笔记。
-tags: [unreal, gas, post, aura, learning]
+tags: [Unreal, GAS, Aura]
 updated: 2025-03-29
 ---
 
