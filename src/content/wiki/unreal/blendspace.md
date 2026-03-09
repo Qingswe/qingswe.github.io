@@ -1,7 +1,7 @@
 ---
 title: BlendSpace
 description: 虚幻引擎中 Blend Space 的创建方法与动画混合用途。
-tags: [unreal, wiki, animation, blend-space]
+tags: [Unreal, Animation]
 updated: 2025-05-25
 ---
 

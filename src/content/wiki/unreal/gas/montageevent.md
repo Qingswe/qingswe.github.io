@@ -1,7 +1,7 @@
 ---
 title: MontageEvent - 蒙太奇事件
 description: MontageEvent 通过 Notify 和 GameplayTag 驱动动画事件同步。
-tags: [unreal, gas, wiki, montage-event, animation]
+tags: [Unreal, GAS, Animation]
 updated: 2025-04-18
 ---
 

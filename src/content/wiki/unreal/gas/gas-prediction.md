@@ -1,7 +1,7 @@
 ---
 title: 游戏性能力预测概述
 description: GAS Prediction 记录本地预测、回滚和 PredictionKey 的协作方式。
-tags: [unreal, gas, wiki, prediction, network]
+tags: [Unreal, GAS]
 updated: 2025-04-20
 ---
 

@@ -1,7 +1,7 @@
 ---
 title: EnhancedInputComponent 系统讲解与 Unity 对比
 description: EnhancedInputComponent 负责输入动作绑定与输入上下文协作。
-tags: [unreal, wiki, input, enhanced-input]
+tags: [Unreal]
 updated: 2025-04-15
 ---
 

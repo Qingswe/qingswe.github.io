@@ -1,7 +1,7 @@
 ---
 title: BTTask
 description: 行为树中 BTTask 节点的职责、入口函数与延迟任务要点。
-tags: [unreal, wiki, behavior-tree, task]
+tags: [Unreal, AI]
 updated: 2025-05-07
 ---
 

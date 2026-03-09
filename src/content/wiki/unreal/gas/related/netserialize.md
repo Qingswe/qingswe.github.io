@@ -1,7 +1,7 @@
 ---
 title: NetSerialize
 description: NetSerialize 决定结构体如何在网络复制中自定义序列化。
-tags: [unreal, wiki, serialization, network]
+tags: [Unreal, Network]
 updated: 2025-05-02
 ---
 

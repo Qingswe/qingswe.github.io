@@ -1,7 +1,7 @@
 ---
 title: UPROPERTY
 description: UPROPERTY 常用说明符与反射暴露规则。
-tags: [unreal, wiki, reflection, uproperty]
+tags: [Unreal, C++]
 updated: 2025-11-27
 ---
 

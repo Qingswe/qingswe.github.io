@@ -1,7 +1,7 @@
 ---
 title: UGamePlayStatics
 description: UGameplayStatics 提供的常用游戏工具函数集合。
-tags: [unreal, wiki, gameplay-statics, utility]
+tags: [Unreal]
 updated: 2025-11-27
 ---
 

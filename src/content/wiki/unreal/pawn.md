@@ -1,7 +1,7 @@
 ---
 title: Pawn 概述
 description: 虚幻引擎中代表玩家或 AI 在世界中的可控实体。
-tags: [unreal, wiki, core-concept, pawn, ai, player-control]
+tags: [Unreal, Actor]
 updated: 2025-05-06
 ---
 

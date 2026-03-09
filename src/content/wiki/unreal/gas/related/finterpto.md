@@ -1,7 +1,7 @@
 ---
 title: FInterpTo
 description: FInterpTo 用于按速度平滑逼近目标值。
-tags: [unreal, wiki, math, interpolation]
+tags: [Unreal, C++]
 updated: 2025-04-24
 ---
 

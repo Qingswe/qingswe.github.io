@@ -1,7 +1,7 @@
 ---
 title: Execution Calculation
 description: Execution Calculation 在 GE 执行时完成复杂属性捕获与数值结算。
-tags: [unreal, gas, wiki, execution-calculation, damage]
+tags: [Unreal, GAS]
 updated: 2025-04-29
 ---
 

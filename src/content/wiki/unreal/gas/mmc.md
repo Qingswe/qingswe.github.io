@@ -1,7 +1,7 @@
 ---
 title: MMC
 description: MMC 用于按属性和上下文动态计算 GE 修改器数值。
-tags: [unreal, gas, wiki, mmc, modifier]
+tags: [Unreal, GAS]
 updated: 2025-04-29
 ---
 

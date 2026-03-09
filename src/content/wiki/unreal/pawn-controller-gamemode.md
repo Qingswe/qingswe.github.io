@@ -1,7 +1,7 @@
 ---
 title: Pawn、Controller 与 GameMode
 description: 虚幻引擎中 Pawn、Controller 和 GameMode 的核心概念与关系
-tags: [unreal, wiki, core-concept, pawn, controller, gamemode]
+tags: [Unreal, Actor]
 updated: 2025-11-26
 ---
 

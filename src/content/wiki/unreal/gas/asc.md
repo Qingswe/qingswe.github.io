@@ -1,7 +1,7 @@
 ---
 title: AbilitySystemComponent (ASC) - 能力系统组件
 description: Ability System Component 负责能力、属性与效果的统一管理。
-tags: [unreal, gas, wiki, asc, ability-system]
+tags: [Unreal, GAS]
 updated: 2025-04-23
 ---
 

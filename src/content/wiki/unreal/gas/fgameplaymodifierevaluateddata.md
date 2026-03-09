@@ -1,7 +1,7 @@
 ---
 title: FGameplayModifierEvaluatedData
 description: ModifierEvaluatedData 表示 GameplayEffect 修改器求值后的结果。
-tags: [unreal, gas, wiki, modifier, data]
+tags: [Unreal, GAS]
 updated: 2025-04-30
 ---
 

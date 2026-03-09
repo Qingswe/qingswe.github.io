@@ -1,7 +1,7 @@
 ---
 title: GameInstance
 description: 虚幻引擎中 GameInstance 的核心概念与使用
-tags: [unreal, wiki, core-concept, gameinstance, singleton]
+tags: [Unreal, Architecture]
 updated: 2025-11-26
 ---
 

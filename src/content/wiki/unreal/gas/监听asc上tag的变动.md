@@ -1,7 +1,7 @@
 ---
 title: 监听 ASC 上 Tag 的变动
 description: 记录如何监听 ASC 上 GameplayTag 的增减并响应状态变化。
-tags: [unreal, gas, post, tag, delegate]
+tags: [Unreal, GAS]
 updated: 2025-04-27
 ---
 

@@ -1,7 +1,7 @@
 ---
 title: 制作敌人AI
 description: 基于行为树与 EQS 搭建敌人 AI 的实践笔记。
-tags: [unreal, post, ai, behavior-tree, eqs]
+tags: [Unreal, AI]
 updated: 2025-05-08
 ---
 

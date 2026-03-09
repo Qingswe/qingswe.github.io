@@ -1,7 +1,7 @@
 ---
 title: AbilityTask
 description: AbilityTask 用于在 GameplayAbility 中组织异步等待与回调流程。
-tags: [unreal, gas, wiki, ability-task, async]
+tags: [Unreal, GAS]
 updated: 2025-04-18
 ---
 

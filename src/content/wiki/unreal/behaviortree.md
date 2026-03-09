@@ -1,7 +1,7 @@
 ---
 title: Behavior Tree (行为树) 概述
 description: 虚幻引擎中用于创建模块化人工智能 (AI) 行为的框架。
-tags: [unreal, wiki, ai, behavior-tree, core-concept]
+tags: [Unreal, AI]
 updated: 2025-05-04
 ---
 
