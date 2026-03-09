@@ -5,14 +5,14 @@ tags: [Unreal, AI]
 updated: 2025-05-08
 ---
 
-![[w/unreal/aura-home.png|Aura Home.png]]
+![Aura-Home.png](/images/unreal/Aura-Home.png)
 创建AuraAIController，添加[[w/unreal/behaviortree|BehaviorTree]]Component
 编辑器中创建 EnemyBase行为树的蓝图，BlackBoard AIController上拥有一个。
 
 ## EnvironmentQuerySystem
 敌人会检查身边的环境，比如在攻击玩家的轨道之间拥有障碍物的话就会更换位置和角度。
 实现的一种方法是使用虚幻引擎的 Environment Query System。运行[[w/unreal/environmentquery|EnvironmentQuery]]时候，可以使用Generator，在某个点周围生成一组location或者actor，称为items，随后在items上执行一系列用户定义的测试，进行打分并选择最优的item
-![[w/unreal/制作敌人ai-2.png|制作敌人AI-2.png]]
+![制作敌人AI-2.png](/images/unreal/制作敌人AI-2.png)
 
 ## 目标
 

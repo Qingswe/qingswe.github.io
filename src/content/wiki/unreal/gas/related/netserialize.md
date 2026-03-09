@@ -7,7 +7,7 @@ updated: 2025-05-02
 
 ## PackageMap
 存储 序列化中 每个元素的读取索引 
-![[w/unreal/netserialize.png|NetSerialize.png]]
+![NetSerialize.png](/images/unreal/NetSerialize.png)
 使用了位运算来处理序列化所属的数值，使用|=判断是否需要序列化，&=判断哪些部分可以被应用，然后将需要的数据通过移位填入字节数组中
 [[w/unreal/gas/related/tstructopstypetraits|TStructOpsTypeTraits]]
 这些TStructOpsTypeTraits 定义了能对特定的结构体FGameplayEffectContext 执行的操作，定义了[[w/unreal/script-struct|Script Struct]]能够做什么

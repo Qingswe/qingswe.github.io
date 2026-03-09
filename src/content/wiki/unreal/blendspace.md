@@ -6,7 +6,7 @@ updated: 2025-05-25
 ---
 
 ## 创建
-![[w/unreal/blendspace.png|BlendSpace.png]]
+![BlendSpace.png](/images/unreal/BlendSpace.png)
 在绿框处设置blendspace的数值范围，从右下角将动画资产拖入中间的窗口中，设置动画的融合切换
 
 ## Blend Space 是什么

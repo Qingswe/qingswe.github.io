@@ -15,7 +15,7 @@ updated: 2025-04-23
 - 根据是否暴击显示不同的伤害效果
 - 根据伤害类型或计算结果，施加减益效果（烧伤、眩晕、减速）
 - 根据受害者身上的GE触发其他效果（反伤、吸血、连锁反应）
-![[w/unreal/metaattributes.png|MetaAttributes.png]]
+![MetaAttributes.png](/images/unreal/MetaAttributes.png)
 ```cpp
 void UAuraAttributeSet::PostGameplayEffectExecute(const struct FGameplayEffectModCallbackData& Data)  
 {  
@@ -45,4 +45,4 @@ UAbilitySystemBlueprintLibrary::AssignTagSetByCallerMagnitude(SpecHandle,Gamepla
   
 Projectile->DamageEffectSpecHandle = SpecHandle;
 ```
-![[w/unreal/metaattributes-1.png|MetaAttributes-1.png]]最终向IncomingDamage中设置的就是 GE Spec生成时，传入的 `GamplayTag.Damage`KeyPair的数值`50`
+![MetaAttributes-1.png](/images/unreal/MetaAttributes-1.png)最终向IncomingDamage中设置的就是 GE Spec生成时，传入的 `GamplayTag.Damage`KeyPair的数值`50`
