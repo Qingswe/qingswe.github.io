@@ -58,7 +58,7 @@ let tooltipX = 0;
 let tooltipY = 0;
 
 function nodeRadius(n: GraphNode): number {
-	return 4 + Math.min(n.linkCount * 2, 10);
+	return 4 + Math.min(n.linkCount * 2, 4);
 }
 
 function getColors() {
@@ -153,7 +153,9 @@ function simulationStep() {
 			const dy = a.y - b.y;
 			const dist2 = dx * dx + dy * dy || 1;
 			const dist = Math.sqrt(dist2);
-			const f = REPULSION / dist2;
+			const ra = nodeRadius(a);
+			const rb = nodeRadius(b);
+			const f = (REPULSION * (ra + rb)) / 8 / dist2;
 			const fx = (dx / dist) * f;
 			const fy = (dy / dist) * f;
 			if (a.fx === null) {
